@@ -1,53 +1,109 @@
-# 🌐 Portfolio Professionnel – Merph-dev
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mon projet — Vitrine professionnelle de Merph-dev</title>
+  <meta name="description" content="Portfolio professionnel de Merph-dev : vitrine de mon parcours en développement web, cybersécurité, data engineering et IA.">
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--muted:#94a3b8;--text:#e6eef8}
+    body{font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#071022 0%,#0f1724 100%);color:var(--text);margin:0;padding:24px}
+    .container{max-width:980px;margin:0 auto}
+    header{display:flex;align-items:center;gap:16px}
+    .logo{width:72px;height:72px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700}
+    h1{margin:0;font-size:1.6rem}
+    p.lead{color:var(--muted);margin-top:8px}
+    .card{background:rgba(255,255,255,0.03);padding:18px;border-radius:10px;margin-top:18px}
+    h2{margin:0 0 12px 0;font-size:1.2rem}
+    ul{margin:8px 0 16px 20px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    footer{color:var(--muted);font-size:0.9rem;margin-top:20px}
+    pre.code{background:#071021;padding:12px;border-radius:8px;overflow:auto;color:#cbd5e1}
+    @media(max-width:720px){.grid{grid-template-columns:1fr}}
+    a.btn{display:inline-block;padding:8px 12px;background:var(--accent);color:#021024;border-radius:8px;text-decoration:none;font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">M</div>
+      <div>
+        <h1>Mon projet — Vitrine professionnelle de Merph-dev</h1>
+        <p class="lead">Présentation du projet : suivi pas-à-pas du parcours autodidacte en développement web, cybersécurité, data engineering et IA, avec suivi Git et démonstrations techniques.</p>
+      </div>
+    </header>
 
-Bienvenue sur mon portfolio professionnel hébergé avec **GitHub Pages**.  
-Ce site est ma carte de visite numérique et une vitrine de mon parcours autodidacte en **développement web**, **cybersécurité**, **data engineering** et **intelligence artificielle**.
+    <section class="card">
+      <h2>Résumé</h2>
+      <p>Ce dépôt contient le portfolio professionnel de Merph-dev. L'objectif est de documenter et montrer, étape par étape, les compétences et projets dans plusieurs domaines : développement web, cybersécurité, data engineering et intelligence artificielle. Chaque section est développée progressivement et versionnée avec Git pour afficher l'évolution technique.</p>
+    </section>
 
----
+    <section class="card">
+      <h2>Sections principales du projet</h2>
+      <div class="grid">
+        <div>
+          <h3>Développement web</h3>
+          <ul>
+            <li>Pages et composants HTML/CSS responsives</li>
+            <li>Exemples de projets (front-end, back-end, APIs)</li>
+            <li>Démonstrations de bonnes pratiques et optimisation</li>
+          </ul>
+        </div>
 
-## 🚀 Accéder au site
+        <div>
+          <h3>Cybersécurité</h3>
+          <ul>
+            <li>Analyses et notes sur tests d'intrusion (pentests) éducatifs</li>
+            <li>Outils, rapports et remédiations</li>
+            <li>Bonnes pratiques de sécurité pour les applications web</li>
+          </ul>
+        </div>
 
-Le portfolio est disponible en ligne à l’adresse suivante :  
-👉 [https://merph-dev.github.io/Projet-Portfolio-Professionnel](https://merph-dev.github.io/Projet-Portfolio-Professionnel)
+        <div>
+          <h3>Data engineering</h3>
+          <ul>
+            <li>Ingestion, transformation et pipeline de données</li>
+            <li>Exemples d'ETL, stockage et visualisation</li>
+            <li>Automatisation et orchestration basique</li>
+          </ul>
+        </div>
 
----
+        <div>
+          <h3>Intelligence artificielle</h3>
+          <ul>
+            <li>Prototypes et expérimentations en IA/ML</li>
+            <li>Projets miniatures pour illustrer concepts</li>
+            <li>Documentation pédagogique et résultats</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-## 📁 Structure du projet
+    <section class="card">
+      <h2>Méthodologie & suivi Git</h2>
+      <p>Chaque étape du projet est enregistrée dans l'historique Git pour montrer la progression : commits fréquents, branches pour les fonctionnalités et pull requests pour les intégrations. Les commits sont accompagnés de messages explicatifs et de fichiers démontrant l'avancée technique.</p>
+      <p>Exemple de bonnes pratiques utilisées :</p>
+      <pre class="code"><code>git checkout -b feat/ajout-page-projet
+git add .
+git commit -m "Ajout de la page explicative du projet"
+git push origin feat/ajout-page-projet
+</code></pre>
+    </section>
 
-- `index.html` → Page principale du portfolio  
-- `assets/` → Images, logos et ressources  
-- `README.md` → Documentation du projet  
-- `LICENSE` → Licence d’utilisation (à définir)
+    <section class="card">
+      <h2>Comment parcourir le dépôt</h2>
+      <ol>
+        <li>Consulter le README.md (page d'accueil du dépôt) pour le résumé et le plan.</li>
+        <li>Parcourir les dossiers par technologie (ex: web/, cybersecurity/, data/, ai/).</li>
+        <li>Regarder les commits et les branches pour suivre la progression pas à pas.</li>
+      </ol>
+      <p>Si vous souhaitez une visite guidée ou une page supplémentaire (ex: page de projets détaillés), dites-moi laquelle et je l'ajoute.</p>
+    </section>
 
----
-
-## 🔄 Workflow Git
-
-Chaque section du site est développée étape par étape dans une branche dédiée :  
-- `feature-accueil` → Page d’accueil  
-- `feature-navigation` → Menu de navigation  
-- `feature-a-propos` → À propos  
-- `feature-competences` → Compétences  
-- `feature-projets` → Projets  
-- `feature-contact` → Formulaire de contact  
-- `feature-footer` → Pied de page  
-
-Les modifications sont **commitées**, **poussées** sur GitHub, puis fusionnées dans `main` via **Pull Request**.  
-GitHub Pages se met à jour automatiquement après chaque fusion.
-
----
-
-## 📬 Me contacter
-
-- 📧 Email : merphy97@gmail.com  
-- 📍 Localisation : Dakar, Sénégal  
-- 🔗 [LinkedIn](https://linkedin.com/in/Merph-dev)  
-- 🔗 [GitHub](https://github.com/Merph-dev)  
-- 🔗 [Facebook](https://facebook.com/Merph-dev)
-
----
-
-## 📜 Licence
-
-Ce projet est ouvert à la consultation et à la collaboration.  
-Licence à définir selon les besoins (MIT, GPL, etc.).
+    <footer>
+      <p>Si tu veux que j'ajoute des liens vers des projets précis, des images, ou que j'adapte le style (couleurs, polices), indique-moi les détails. Je peux aussi ajouter un menu, un lien vers le CV, ou une section contact.</p>
+      <p>Créé automatiquement par l'assistant pour le dépôt FullStackFlow-dev/Mon-projet----ma-vitrine-dev---mon-Portfolio-.</p>
+    </footer>
+  </div>
+</body>
+</html>
