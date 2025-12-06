@@ -1,0 +1,878 @@
+#  EXPLICATIONS COMPLÈTES - FICHIER JAVASCRIPT (script.js)
+
+##  Table des Matières
+
+1. [Concepts de Base](#concepts-de-base)
+2. [DOMContentLoaded](#domcontentloaded)
+3. [Sélection d'Éléments](#sélection-déléments)
+4. [Menu Hamburger](#menu-hamburger)
+5. [Événements](#événements)
+6. [Scroll et Header](#scroll-et-header)
+7. [Navigation Active](#navigation-active)
+8. [Filtrage des Projets](#filtrage-des-projets)
+9. [Validation du Formulaire](#validation-du-formulaire)
+10. [Intersection Observer](#intersection-observer)
+
+---
+
+## 1. CONCEPTS DE BASE
+
+### Qu'est-ce que JavaScript ?
+JavaScript est le langage qui rend votre site **interactif** :
+- Réagir aux clics
+- Modifier le HTML dynamiquement
+- Valider des formulaires
+- Créer des animations
+- Communiquer avec des serveurs
+
+---
+
+### Le DOM (Document Object Model)
+```
+Document (page HTML)
+    ├── html
+    │   ├── head
+    │   │   ├── title
+    │   │   └── meta
+    │   └── body
+    │       ├── header
+    │       ├── section
+    │       └── footer
+```
+**Explication :**
+- Le **DOM** = arbre représentant la structure HTML
+- JavaScript peut **lire** et **modifier** cet arbre
+- Chaque élément HTML devient un **objet JavaScript**
+
+---
+
+### Variables
+
+#### `const` (constante)
+```javascript
+const navToggle = document.getElementById('nav-toggle');
+```
+**Explication :**
+- **const** = constante (ne peut pas être réassignée)
+- La valeur ne changera jamais
+- **Utilisation** : éléments DOM, valeurs fixes
+- **Erreur si** : `navToggle = autreValeur;` ❌
+
+---
+
+#### `let` (variable)
+```javascript
+let currentSection = '';
+```
+**Explication :**
+- **let** = variable (peut changer)
+- La valeur peut être modifiée
+- **Utilisation** : compteurs, états temporaires
+- **OK** : `currentSection = 'accueil';` ✅
+
+---
+
+#### `var` (ancien, éviter)
+```javascript
+var x = 10; // ❌ Ne pas utiliser
+```
+**Pourquoi éviter var ?**
+- Portée (scope) confuse
+- Comportement imprévisible
+- **Toujours utiliser const ou let**
+
+---
+
+## 2. DOMContentLoaded
+
+### Structure de base
+```javascript
+document.addEventListener('DOMContentLoaded', function() {
+  // Tout votre code ici
+});
+```
+
+**Explication ligne par ligne :**
+- **document** = représente toute la page HTML
+- **addEventListener** = écoute un événement
+- **'DOMContentLoaded'** = quand le HTML est complètement chargé
+- **function() { }** = fonction exécutée quand l'événement se produit
+
+---
+
+### Pourquoi attendre le DOMContentLoaded ?
+```javascript
+// ❌ SANS DOMContentLoaded
+const button = document.getElementById('btn');
+// Erreur : button est null (n'existe pas encore)
+
+//  AVEC DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  const button = document.getElementById('btn');
+  // OK : le HTML est chargé, le bouton existe
+});
+```
+
+**Analogie** : C'est comme attendre que tous les invités arrivent avant de commencer la fête !
+
+---
+
+### console.log()
+```javascript
+console.log('Page chargée avec succès !');
+```
+**Explication :**
+- Affiche un message dans la **console du navigateur**
+- **Comment voir la console ?** 
+  - Windows/Linux : F12 → onglet "Console"
+  - Mac : Cmd + Option + J
+- **Utilité** : déboguer (trouver des erreurs)
+
+---
+
+## 3. SÉLECTION D'ÉLÉMENTS
+
+### `getElementById()`
+```javascript
+const navToggle = document.getElementById('nav-toggle');
+```
+**Explication :**
+- Cherche un élément avec `id="nav-toggle"`
+- Retourne **UN SEUL** élément (les ID sont uniques)
+- Retourne `null` si l'élément n'existe pas
+
+**HTML correspondant :**
+```html
+<button id="nav-toggle">☰</button>
+```
+
+---
+
+### `querySelector()`
+```javascript
+const header = document.querySelector('.header');
+```
+**Explication :**
+- Cherche le **premier** élément correspondant au sélecteur CSS
+- **Sélecteur CSS** : `.classe`, `#id`, `element`, etc.
+- Plus flexible que `getElementById`
+
+**Exemples :**
+```javascript
+document.querySelector('#accueil');     // ID
+document.querySelector('.btn');         // Classe
+document.querySelector('button');       // Balise
+document.querySelector('.nav a');       // Descendant
+document.querySelector('[data-id="5"]'); // Attribut
+```
+
+---
+
+### `querySelectorAll()`
+```javascript
+const navLinks = document.querySelectorAll('.nav__link');
+```
+**Explication :**
+- Cherche **TOUS** les éléments correspondants
+- Retourne une **NodeList** (liste d'éléments)
+- Même s'il n'y a qu'un seul élément, retourne une liste
+
+**HTML correspondant :**
+```html
+<a class="nav__link">Accueil</a>
+<a class="nav__link">À propos</a>
+<a class="nav__link">Contact</a>
+<!-- navLinks contient ces 3 liens -->
+```
+
+---
+
+### Différence getElementById vs querySelector
+```javascript
+// Même résultat :
+document.getElementById('header');
+document.querySelector('#header');
+
+// querySelector est plus flexible :
+document.querySelector('.header.active'); // Plusieurs classes
+document.querySelector('header > nav');   // Relation parent-enfant
+```
+
+---
+
+## 4. MENU HAMBURGER
+
+### Vérification d'existence
+```javascript
+if (navToggle && navMenu) {
+  // Code ici
+}
+```
+**Explication :**
+- **if** = condition "si"
+- **&&** = opérateur logique "ET"
+- Vérifie que les deux éléments existent
+- **Pourquoi ?** Évite les erreurs si un élément manque
+
+**Cas possibles :**
+```javascript
+// Cas 1 : Les deux existent 
+if (element1 && element2) { /* Exécuté */ }
+
+// Cas 2 : Un ou les deux manquent ❌
+if (null && element) { /* Pas exécuté */ }
+if (element && null) { /* Pas exécuté */ }
+if (null && null) { /* Pas exécuté */ }
+```
+
+---
+
+### addEventListener (Écouteur d'événements)
+```javascript
+navToggle.addEventListener('click', function() {
+  // Code exécuté au clic
+});
+```
+**Explication :**
+- **addEventListener** = écoute un événement sur un élément
+- **'click'** = type d'événement (clic de souris)
+- **function() { }** = fonction callback (appelée quand l'événement se produit)
+
+**Autres événements courants :**
+```javascript
+element.addEventListener('mouseover', ...);  // Survol
+element.addEventListener('mouseout', ...);   // Fin de survol
+element.addEventListener('keydown', ...);    // Touche pressée
+element.addEventListener('submit', ...);     // Soumission de formulaire
+element.addEventListener('scroll', ...);     // Défilement
+```
+
+---
+
+### classList.toggle()
+```javascript
+navMenu.classList.toggle('nav__menu--active');
+```
+**Explication :**
+- **classList** = liste des classes CSS de l'élément
+- **toggle()** = ajoute/enlève la classe
+  - Si la classe existe → l'enlève
+  - Si elle n'existe pas → l'ajoute
+
+**Exemple pratique :**
+```javascript
+// État initial
+<div class="menu">
+
+// Premier clic → ajoute
+<div class="menu active">
+
+// Deuxième clic → enlève
+<div class="menu">
+```
+
+---
+
+### Autres méthodes classList
+```javascript
+element.classList.add('classe');       // Ajoute
+element.classList.remove('classe');    // Enlève
+element.classList.toggle('classe');    // Bascule
+element.classList.contains('classe');  // Vérifie (true/false)
+element.classList.replace('old', 'new'); // Remplace
+```
+
+---
+
+## 5. ÉVÉNEMENTS
+
+### forEach (Boucle)
+```javascript
+navLinks.forEach(function(link) {
+  // Code exécuté pour chaque lien
+});
+```
+**Explication :**
+- **forEach** = pour chaque élément de la liste
+- **function(link)** = fonction exécutée pour chaque élément
+- **link** = paramètre représentant l'élément actuel
+
+**Exemple concret :**
+```javascript
+const fruits = ['Pomme', 'Banane', 'Orange'];
+
+fruits.forEach(function(fruit) {
+  console.log(fruit);
+});
+
+// Affiche :
+// Pomme
+// Banane
+// Orange
+```
+
+---
+
+### `this` dans les événements
+```javascript
+button.addEventListener('click', function() {
+  this.classList.add('clicked');
+});
+```
+**Explication :**
+- **this** = fait référence à l'élément qui a déclenché l'événement
+- Ici : `this` = le bouton cliqué
+- **Attention** : ne fonctionne pas avec les arrow functions `() =>`
+
+**Exemple :**
+```html
+<button id="btn1">Bouton 1</button>
+<button id="btn2">Bouton 2</button>
+
+<script>
+document.querySelectorAll('button').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    console.log(this); // Affiche le bouton cliqué
+  });
+});
+</script>
+```
+
+---
+
+## 6. SCROLL ET HEADER
+
+### window.scrollY
+```javascript
+const scrollPosition = window.scrollY;
+```
+**Explication :**
+- **window** = objet représentant la fenêtre du navigateur
+- **scrollY** = nombre de pixels scrollés depuis le haut
+- **Exemples :**
+  - En haut de la page : `scrollY = 0`
+  - Après avoir scrollé 500px : `scrollY = 500`
+
+---
+
+### Événement scroll
+```javascript
+window.addEventListener('scroll', function() {
+  const scrollPosition = window.scrollY;
+  
+  if (scrollPosition > 50) {
+    header.classList.add('header--scrolled');
+  } else {
+    header.classList.remove('header--scrolled');
+  }
+});
+```
+**Explication :**
+- S'exécute à chaque fois qu'on scrolle
+- Si on a scrollé plus de 50px → ajoute la classe
+- Sinon → enlève la classe
+- Permet de changer le style du header au scroll
+
+---
+
+## 7. NAVIGATION ACTIVE
+
+### Propriétés importantes
+```javascript
+const sectionTop = section.offsetTop;
+const sectionHeight = section.offsetHeight;
+```
+**Explication :**
+- **offsetTop** = distance du haut de la page au début de l'élément (en pixels)
+- **offsetHeight** = hauteur totale de l'élément (en pixels)
+
+**Schéma :**
+```
+┌─────────────────┐  ← 0px (haut de la page)
+│                 │
+│  Section 1      │  offsetTop = 100px
+├─────────────────┤  ← Début de section (100px)
+│                 │
+│  Section 2      │  offsetHeight = 500px
+│                 │
+└─────────────────┘  ← Fin de section (600px)
+```
+
+---
+
+### getAttribute()
+```javascript
+const sectionId = section.getAttribute('id');
+const linkHref = link.getAttribute('href');
+```
+**Explication :**
+- **getAttribute()** = récupère la valeur d'un attribut HTML
+- Retourne une chaîne de caractères (string)
+
+**Exemple :**
+```html
+<section id="accueil" data-scroll="true"></section>
+
+<script>
+section.getAttribute('id');          // "accueil"
+section.getAttribute('data-scroll'); // "true"
+</script>
+```
+
+---
+
+### Comparaison stricte (===)
+```javascript
+if (link.getAttribute('href') === '#' + currentSection) {
+  link.classList.add('nav__link--active');
+}
+```
+**Explication :**
+- **===** = comparaison stricte (type ET valeur)
+- **==** = comparaison souple (conversion automatique)
+
+**Différence :**
+```javascript
+// === (strict)
+5 === 5     // true
+5 === '5'   // false (number vs string)
+
+// == (souple)
+5 == 5      // true
+5 == '5'    // true (convertit '5' en 5)
+```
+
+**Toujours utiliser === sauf cas particulier !**
+
+---
+
+### Concaténation de strings
+```javascript
+'#' + currentSection  // "#accueil"
+```
+**Explication :**
+- **+** = concaténation (coller des strings)
+- `'#'` + `'accueil'` = `'#accueil'`
+
+**Autres exemples :**
+```javascript
+'Bonjour ' + 'monde'     // "Bonjour monde"
+'2' + '2'                // "22" (pas 4 !)
+'Score: ' + 100          // "Score: 100"
+```
+
+---
+
+## 8. FILTRAGE DES PROJETS
+
+### includes()
+```javascript
+if (cardCategory.includes(filterValue)) {
+  // Afficher la carte
+}
+```
+**Explication :**
+- **includes()** = vérifie si une chaîne contient une sous-chaîne
+- Retourne `true` ou `false`
+
+**Exemples :**
+```javascript
+'fullstack ai'.includes('ai')        // true
+'fullstack ai'.includes('data')      // false
+'bonjour monde'.includes('monde')    // true
+```
+
+**Application pratique :**
+```html
+<div data-category="fullstack ai"></div>
+
+<script>
+const category = card.getAttribute('data-category'); // "fullstack ai"
+category.includes('ai')        // true
+category.includes('fullstack') // true
+category.includes('data')      // false
+</script>
+```
+
+---
+
+### style.display
+```javascript
+card.style.display = 'block';  // Afficher
+card.style.display = 'none';   // Cacher
+```
+**Explication :**
+- **style.display** = modifie la propriété CSS `display`
+- **'none'** = élément caché (invisible et ne prend pas de place)
+- **'block'** = élément visible (prend toute la largeur)
+
+**Autres valeurs :**
+```javascript
+element.style.display = 'flex';
+element.style.display = 'grid';
+element.style.display = 'inline';
+element.style.display = 'inline-block';
+```
+
+---
+
+## 9. VALIDATION DU FORMULAIRE
+
+### event.preventDefault()
+```javascript
+contactForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  // Code de validation
+});
+```
+**Explication :**
+- **e** (ou event) = objet contenant des infos sur l'événement
+- **preventDefault()** = empêche le comportement par défaut
+- Pour un formulaire : empêche la soumission et le rechargement de la page
+- Permet de valider les données AVANT l'envoi
+
+---
+
+### .value (Récupérer la valeur)
+```javascript
+const nom = document.getElementById('nom').value;
+```
+**Explication :**
+- **value** = récupère la valeur tapée dans un input/textarea
+- Retourne une chaîne de caractères (string)
+
+**Exemple :**
+```html
+<input type="text" id="nom" value="Jean">
+
+<script>
+document.getElementById('nom').value; // "Jean"
+</script>
+```
+
+---
+
+### .trim()
+```javascript
+if (nom.trim() === '') {
+  // Le champ est vide
+}
+```
+**Explication :**
+- **trim()** = enlève les espaces au début et à la fin
+- Utile pour vérifier si un champ est vraiment vide
+
+**Exemples :**
+```javascript
+'  Bonjour  '.trim()    // "Bonjour"
+'   '.trim()            // ""
+'Jean Dupont'.trim()    // "Jean Dupont" (pas d'espace aux extrémités)
+```
+
+---
+
+### Opérateur logique ! (NON)
+```javascript
+if (!isValidEmail(email)) {
+  // Email n'est PAS valide
+}
+```
+**Explication :**
+- **!** = opérateur "NON" (inverse le résultat)
+- `!true` = `false`
+- `!false` = `true`
+
+**Exemples :**
+```javascript
+!true                  // false
+!false                 // true
+!(5 > 3)              // false (car 5 > 3 est true)
+!isValidEmail(email)  // true si email invalide
+```
+
+---
+
+### Regex (Expressions régulières)
+```javascript
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+```
+**Explication :**
+- **Regex** = motif (pattern) pour valider/chercher du texte
+- **Compliqué** mais très puissant
+- Ici : valide le format email
+
+**Décorticage du regex :**
+```
+^               Début de la chaîne
+[^\s@]+         Un ou plusieurs caractères (pas espace, pas @)
+@               Le caractère @
+[^\s@]+         Un ou plusieurs caractères (pas espace, pas @)
+\.              Un point (échappé avec \)
+[^\s@]+         Un ou plusieurs caractères (pas espace, pas @)
+$               Fin de la chaîne
+```
+
+**Exemples valides :**
+- `jean@example.com` ✅
+- `user.name@site.fr` ✅
+
+**Exemples invalides :**
+- `jean@` ❌
+- `@example.com` ❌
+- `jean example.com` ❌
+
+---
+
+### .test()
+```javascript
+emailRegex.test('jean@example.com'); // true
+```
+**Explication :**
+- **test()** = vérifie si une chaîne correspond au regex
+- Retourne `true` ou `false`
+
+---
+
+### .length
+```javascript
+if (message.trim().length < 10) {
+  // Message trop court
+}
+```
+**Explication :**
+- **length** = nombre de caractères dans une chaîne
+- Retourne un nombre (integer)
+
+**Exemples :**
+```javascript
+'Bonjour'.length           // 7
+''.length                  // 0
+'   '.trim().length        // 0
+```
+
+---
+
+### alert()
+```javascript
+alert('Formulaire valide !');
+```
+**Explication :**
+- Affiche une boîte de dialogue
+- Bloque l'exécution jusqu'à ce que l'utilisateur clique "OK"
+- **UX** : à utiliser avec parcimonie (ça interrompt l'utilisateur)
+
+---
+
+### .reset()
+```javascript
+contactForm.reset();
+```
+**Explication :**
+- **reset()** = vide tous les champs du formulaire
+- Remet les valeurs par défaut
+- Comme si on cliquait sur un bouton "Reset"
+
+---
+
+## 10. INTERSECTION OBSERVER
+
+### Qu'est-ce qu'un Observer ?
+```javascript
+const observer = new IntersectionObserver(function(entries) {
+  // Code exécuté quand un élément entre/sort de la vue
+}, {
+  threshold: 0.1
+});
+```
+**Explication :**
+- **IntersectionObserver** = API moderne pour détecter la visibilité d'éléments
+- Remplace le scroll + calculs manuels (plus performant)
+- **threshold: 0.1** = déclenche quand 10% de l'élément est visible
+
+---
+
+### entries
+```javascript
+observer.observe(element); // Commence à observer
+
+entries.forEach(function(entry) {
+  if (entry.isIntersecting) {
+    // L'élément est visible
+  }
+});
+```
+**Explication :**
+- **entries** = liste des éléments observés
+- **entry.isIntersecting** = true si l'élément est visible
+- **entry.target** = l'élément HTML observé
+
+---
+
+### .unobserve()
+```javascript
+observer.unobserve(entry.target);
+```
+**Explication :**
+- Arrête d'observer cet élément
+- Économise des ressources
+- Utile si l'animation ne se joue qu'une fois
+
+---
+
+## 11. CONCEPTS AVANCÉS
+
+### Callback
+```javascript
+function executeCallback(callback) {
+  callback();
+}
+
+executeCallback(function() {
+  console.log('Je suis un callback !');
+});
+```
+**Explication :**
+- **Callback** = fonction passée en paramètre à une autre fonction
+- Sera exécutée plus tard (différé)
+- Très utilisé avec les événements
+
+---
+
+### Arrow Functions (Fonctions fléchées)
+```javascript
+// Fonction classique
+const add = function(a, b) {
+  return a + b;
+};
+
+// Fonction fléchée
+const add = (a, b) => {
+  return a + b;
+};
+
+// Fléchée courte (return implicite)
+const add = (a, b) => a + b;
+```
+**Avantages :**
+- Syntaxe plus courte
+- `this` se comporte différemment
+
+---
+
+### Template Literals (Chaînes de template)
+```javascript
+const nom = 'Jean';
+const age = 25;
+
+// Ancien
+const message = 'Bonjour ' + nom + ', vous avez ' + age + ' ans.';
+
+// Moderne
+const message = `Bonjour ${nom}, vous avez ${age} ans.`;
+```
+**Explication :**
+- **Backticks** `` ` ` `` au lieu de `' '`
+- **${variable}** = interpole la variable
+- Plus lisible, surtout avec plusieurs variables
+
+---
+
+### Destructuring (Déstructuration)
+```javascript
+// Objet
+const user = { nom: 'Jean', age: 25 };
+const { nom, age } = user; // nom = 'Jean', age = 25
+
+// Tableau
+const colors = ['red', 'green', 'blue'];
+const [first, second] = colors; // first = 'red', second = 'green'
+```
+
+---
+
+## 📊 RÉSUMÉ DES MÉTHODES IMPORTANTES
+
+| Méthode | Rôle | Exemple |
+|---------|------|---------|
+| `getElementById()` | Sélectionne par ID | `document.getElementById('btn')` |
+| `querySelector()` | Sélectionne le 1er élément | `document.querySelector('.btn')` |
+| `querySelectorAll()` | Sélectionne tous les éléments | `document.querySelectorAll('.btn')` |
+| `addEventListener()` | Écoute un événement | `btn.addEventListener('click', ...)` |
+| `classList.add()` | Ajoute une classe | `element.classList.add('active')` |
+| `classList.remove()` | Enlève une classe | `element.classList.remove('active')` |
+| `classList.toggle()` | Bascule une classe | `element.classList.toggle('active')` |
+| `setAttribute()` | Modifie un attribut | `element.setAttribute('id', 'new')` |
+| `getAttribute()` | Récupère un attribut | `element.getAttribute('id')` |
+| `forEach()` | Boucle sur un tableau | `array.forEach(item => ...)` |
+
+---
+
+##  PATTERNS COURANTS
+
+### Pattern 1 : Toggle au clic
+```javascript
+button.addEventListener('click', function() {
+  element.classList.toggle('active');
+});
+```
+
+---
+
+### Pattern 2 : Boucle sur éléments
+```javascript
+const items = document.querySelectorAll('.item');
+items.forEach(function(item) {
+  item.addEventListener('click', function() {
+    // Action sur chaque item
+  });
+});
+```
+
+---
+
+### Pattern 3 : Validation de formulaire
+```javascript
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const value = input.value.trim();
+  
+  if (value === '') {
+    alert('Champ requis !');
+    return;
+  }
+  
+  // Traitement...
+});
+```
+
+---
+
+### Pattern 4 : Filtrage
+```javascript
+buttons.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    const filter = this.getAttribute('data-filter');
+    
+    items.forEach(function(item) {
+      const category = item.getAttribute('data-category');
+      
+      if (filter === 'all' || category.includes(filter)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+});
+```
+
+---
+
+##  DÉBOGAGE
+
+### Console
+```javascript
+console.log('Valeur :', variable);        // Afficher une valeur
+console.error('Erreur !');                // Afficher une erreur
+console.warn('Attention !');              // Afficher
