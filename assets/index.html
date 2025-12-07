@@ -1,1 +1,727 @@
+<!DOCTYPE html>
+<!-- 
+    EXPLICATION : <!DOCTYPE html> indique au navigateur que c'est un document HTML5
+    C'est OBLIGATOIRE en première ligne
+-->
+<html lang="fr">
+<!-- 
+    <html lang="fr"> définit la langue de la page (français)
+    Utile pour les moteurs de recherche et l'accessibilité
+-->
 
+<head>
+    <!-- 
+        <head> contient les métadonnées (informations sur la page)
+        Ces informations ne s'affichent PAS sur la page visible
+    -->
+    
+    <meta charset="UTF-8">
+    <!-- Définit l'encodage des caractères pour afficher correctement les accents -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+        TRÈS IMPORTANT pour le responsive design !
+        - width=device-width : la largeur s'adapte à l'écran
+        - initial-scale=1.0 : zoom initial à 100%
+        Sans cette ligne, le site ne sera PAS responsive sur mobile
+    -->
+    
+    <meta name="description" content="Portfolio de Merphy - Mademba - Développeur Full Stack, Expert Cybersécurité, Data Engineer & Spécialiste IA">
+    <!-- Description qui apparaît dans Google (SEO) -->
+    
+    <title>Merphy - Mademba - Portfolio Professionnel</title>
+    <!-- Titre qui apparaît dans l'onglet du navigateur -->
+    
+    <!-- Lien vers le fichier CSS externe -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 
+        Ce lien charge le fichier style.css
+        Vous devrez créer ce fichier dans le même dossier que index.html
+    -->
+</head>
+
+<body>
+    <!-- 
+        <body> contient tout le contenu VISIBLE de la page
+    -->
+
+    <!-- ========================================
+         EN-TÊTE / NAVIGATION
+         ======================================== -->
+    <header class="header" id="header">
+        <!-- 
+            <header> = zone d'en-tête de la page
+            class="header" = pour le style CSS
+            id="header" = pour cibler avec JavaScript
+        -->
+        
+        <nav class="nav">
+           <div class="nav__logo">
+             <h1 class="nav__title">Merphy - Mademba</h1>
+             <p class="nav__subtitle">Dev Full Stack | Cybersécurité | Data | IA</p>
+          </div>
+    
+    <!-- AJOUTER LE BOUTON HAMBURGER -->
+            
+            <button class="nav__toggle" id="nav-toggle">
+            <span class="nav__toggle-icon"></span>
+            <span class="nav__toggle-icon"></span>
+            <span class="nav__toggle-icon"></span>
+    </button>
+    
+    <!-- AJOUTER LE MENU -->
+            
+         <ul class="nav__menu" id="nav-menu">
+            <li><a href="#accueil" class="nav__link">Accueil</a></li>
+            <li><a href="#a-propos" class="nav__link">À Propos</a></li>
+            <li><a href="#competences" class="nav__link">Compétences</a></li>
+            <li><a href="#certifications" class="nav__link">Certifications</a></li>
+            <li><a href="#projets" class="nav__link">Projets</a></li>
+            <li><a href="#contact" class="nav__link">Contact</a></li>
+         </ul>
+       </nav>
+    </header>
+            <!-- Menu de navigation pour desktop -->
+        
+    <!-- ========================================
+         SECTION ACCUEIL / HERO
+         ======================================== -->
+    <section class="hero section" id="accueil">
+        <!-- 
+            <section> = section de contenu
+            class="hero section" = deux classes CSS (hero ET section)
+        -->
+    
+        <div class="hero__container container">
+            <!-- container = classe CSS pour centrer le contenu -->
+            
+            <div class="hero__content">
+                <img src="image/merphdev-996948742.jpg" alt="Photo de Merphy-Mademba" class="hero__img" loading="lazy">
+                <!-- 
+                    IMPORTANT : Remplacez "ma-photo.jpg" par le nom de ma photo
+                    L'attribut alt décrit l'image (accessibilité)
+                -->
+                
+                <h2 class="hero__title">
+                    Bonjour, je suis <span class="hero__name">Merphy-Mademba</span>
+                </h2>
+                <!-- <span> permet de styliser une partie du texte différemment -->
+                
+                <p class="hero__description">
+                    Développeur Full Stack passionné par la Cybersécurité, 
+                    le Data Engineering et l'Intelligence Artificielle
+                </p>
+                
+                <div class="hero__buttons">
+                    <a href="#projets" class="btn btn--primary">Voir mes projets</a>
+                    <a href="#contact" class="btn btn--secondary">Me contacter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION À PROPOS
+         ======================================== -->
+    <section class="about section" id="a-propos">
+        <div class="about__container container">
+            <h2 class="section__title">À Propos de Moi</h2>
+            
+            <div class="about__content">
+                <div class="about__text">
+                    <p class="about__paragraph">
+                        Professionnel polyvalent avec une expertise approfondie en développement web full stack, 
+                        cybersécurité, ingénierie des données et intelligence artificielle. 
+                        Certifié CompTIA A+ et Security+, je combine des compétences techniques solides 
+                        avec une passion pour l'innovation technologique.
+                    </p>
+                    <p class="about__paragraph">
+                        Ma mission : créer des solutions sécurisées, performantes et intelligentes 
+                        qui répondent aux défis technologiques d'aujourd'hui et de demain.
+                    </p>
+                </div>
+                
+                <div class="about__info">
+                    <h3 class="about__subtitle">Informations</h3>
+                    <ul class="about__list">
+                        <li class="about__item">
+                            <strong>Localisation :</strong> Dakar, Sénégal
+                        </li>
+                        <li class="about__item">
+                            <strong>Email :</strong> merphy97@gmail.com
+                        </li>
+                        <li class="about__item">
+                            <strong>Langues :</strong> Français, Anglais
+                        </li>
+                        <li class="about__item">
+                            <strong>Disponibilité :</strong> Ouvert aux opportunités et aux collaborations
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION COMPÉTENCES
+         ======================================== -->
+    <section class="skills section" id="competences">
+        <div class="skills__container container">
+            <h2 class="section__title">Mes Compétences</h2>
+
+            <!-- Développement Web Full Stack -->
+            <div class="skill-category">
+                <h3 class="skill-category__title">💻 Développement Web Full Stack</h3>
+                
+                <div class="skill-category__grid">
+                    <div class="skill-box">
+                        <h4 class="skill-box__title">Front-End</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">HTML5</li>
+                            <li class="skill-item">CSS3</li>
+                            <li class="skill-item">JavaScript (ES6+)</li>
+                            <li class="skill-item">React.js</li>
+                            <li class="skill-item">Vue.js</li>
+                            <li class="skill-item">Angular</li>
+                            <li class="skill-item">TypeScript</li>
+                            <li class="skill-item">Bootstrap</li>
+                            <li class="skill-item">Tailwind CSS</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <h4 class="skill-box__title">Back-End</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">Node.js</li>
+                            <li class="skill-item">Express.js</li>
+                            <li class="skill-item">Python (Django, Flask)</li>
+                            <li class="skill-item">PHP</li>
+                            <li class="skill-item">Java (Spring Boot)</li>
+                            <li class="skill-item">Ruby on Rails</li>
+                            <li class="skill-item">RESTful API</li>
+                            <li class="skill-item">GraphQL</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <h4 class="skill-box__title">Bases de Données</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">MySQL</li>
+                            <li class="skill-item">PostgreSQL</li>
+                            <li class="skill-item">MongoDB</li>
+                            <li class="skill-item">Redis</li>
+                            <li class="skill-item">SQLite</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cybersécurité -->
+            <div class="skill-category">
+                <h3 class="skill-category__title">Cybersécurité & Analyse de Sécurité</h3>
+                <ul class="skill-list skill-list--columns">
+                    <li class="skill-item">Analyse de vulnérabilités</li>
+                    <li class="skill-item">Tests d'intrusion (Penetration Testing)</li>
+                    <li class="skill-item">Sécurité réseau et firewall</li>
+                    <li class="skill-item">SIEM (Security Information and Event Management)</li>
+                    <li class="skill-item">Gestion des incidents de sécurité</li>
+                    <li class="skill-item">Cryptographie</li>
+                    <li class="skill-item">Conformité (RGPD, ISO 27001)</li>
+                    <li class="skill-item">Sécurité des applications web (OWASP)</li>
+                    <li class="skill-item">Outils : Wireshark, Nmap, Metasploit, Burp Suite</li>
+                </ul>
+            </div>
+
+            <!-- Data Engineering & Data Analysis -->
+            <div class="skill-category">
+                <h3 class="skill-category__title">Data Engineering & Data Analysis</h3>
+                
+                <div class="skill-category__grid">
+                    <div class="skill-box">
+                        <h4 class="skill-box__title">Data Engineering</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">ETL (Extract, Transform, Load)</li>
+                            <li class="skill-item">Apache Spark</li>
+                            <li class="skill-item">Apache Kafka</li>
+                            <li class="skill-item">Airflow</li>
+                            <li class="skill-item">Data Warehousing</li>
+                            <li class="skill-item">Big Data (Hadoop)</li>
+                            <li class="skill-item">Cloud Data (AWS, Azure, GCP)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <h4 class="skill-box__title">Data Analysis</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">Python (Pandas, NumPy)</li>
+                            <li class="skill-item">R</li>
+                            <li class="skill-item">SQL avancé</li>
+                            <li class="skill-item">Visualisation (Matplotlib, Seaborn, Plotly)</li>
+                            <li class="skill-item">Power BI</li>
+                            <li class="skill-item">Tableau</li>
+                            <li class="skill-item">Excel avancé</li>
+                            <li class="skill-item">Statistiques et probabilités</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intelligence Artificielle -->
+            <div class="skill-category">
+                <h3 class="skill-category__title">Intelligence Artificielle & Machine Learning</h3>
+                
+                <div class="skill-category__grid">
+                    <div class="skill-box">
+                        <h4 class="skill-box__title">Machine Learning</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">Scikit-learn</li>
+                            <li class="skill-item">TensorFlow</li>
+                            <li class="skill-item">PyTorch</li>
+                            <li class="skill-item">Keras</li>
+                            <li class="skill-item">Algorithmes supervisés et non-supervisés</li>
+                            <li class="skill-item">Réseaux de neurones</li>
+                            <li class="skill-item">Deep Learning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <h4 class="skill-box__title">LLM & IA Générative</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">Large Language Models (GPT, Claude, LLaMA)</li>
+                            <li class="skill-item">Prompt Engineering</li>
+                            <li class="skill-item">Fine-tuning de modèles</li>
+                            <li class="skill-item">Hugging Face Transformers</li>
+                            <li class="skill-item">OpenAI API</li>
+                            <li class="skill-item">LangChain</li>
+                            <li class="skill-item">RAG (Retrieval-Augmented Generation)</li>
+                            <li class="skill-item">Génération d'images (Stable Diffusion, DALL-E)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <h4 class="skill-box__title">NLP (Natural Language Processing)</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">NLTK</li>
+                            <li class="skill-item">spaCy</li>
+                            <li class="skill-item">Analyse de sentiment</li>
+                            <li class="skill-item">Classification de texte</li>
+                            <li class="skill-item">Named Entity Recognition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Autres Compétences -->
+            <div class="skill-category">
+                <h3 class="skill-category__title">Outils & Technologies</h3>
+                <ul class="skill-list skill-list--columns">
+                    <li class="skill-item">Git & GitHub</li>
+                    <li class="skill-item">Docker & Kubernetes</li>
+                    <li class="skill-item">CI/CD (Jenkins, GitLab CI)</li>
+                    <li class="skill-item">Linux/Unix</li>
+                    <li class="skill-item">AWS, Azure, Google Cloud</li>
+                    <li class="skill-item">Agile/Scrum</li>
+                    <li class="skill-item">VS Code, PyCharm, IntelliJ</li>
+                    <li class="skill-item">Postman</li>
+                    <li class="skill-item">Jira</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION CERTIFICATIONS
+         ======================================== -->
+    <section class="certifications section" id="certifications">
+        <div class="certifications__container container">
+            <h2 class="section__title">Certifications Professionnelles</h2>
+            
+            <div class="certifications__grid">
+                <!-- Certification 1 -->
+                <div class="cert-card">
+                    <div class="cert-card__img-container">
+                        <img src="image/CompTIA-A+ (1).png" alt="CompTIA A+ Logo" class="cert-card__img">
+                    </div>
+                    <div class="cert-card__content">
+                        <h3 class="cert-card__title">CompTIA A+</h3>
+                        <p class="cert-card__info">
+                            <strong>Organisme :</strong> CompTIA
+                        </p>
+                        <p class="cert-card__info">
+                            <strong>Date :</strong> [Année en Cours]
+                        </p>
+                        <p class="cert-card__description">
+                            Certification fondamentale couvrant le support informatique, 
+                            le dépannage matériel et logiciel, la sécurité de base et les réseaux.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Certification 2 -->
+                <div class="cert-card">
+                    <div class="cert-card__img-container">
+                        <img src="image/CompTIA secure+(1).png" alt="CompTIA Security+ Logo" class="cert-card__img">
+                    </div>
+                    <div class="cert-card__content">
+                        <h3 class="cert-card__title">CompTIA Security+</h3>
+                        <p class="cert-card__info">
+                            <strong>Organisme :</strong> CompTIA
+                        </p>
+                        <p class="cert-card__info">
+                            <strong>Date :</strong> [Année en Cours]
+                        </p>
+                        <p class="cert-card__description">
+                            Certification en cybersécurité couvrant la gestion des risques, 
+                            la cryptographie, la sécurité réseau, et la réponse aux incidents.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION PROJETS
+         ======================================== -->
+    <section class="projects section" id="projets">
+        <div class="projects__container container">
+            <h2 class="section__title">Mes Projets</h2>
+            
+            <!-- Filtres de projets -->
+            <div class="project-filters" id="project-filters">
+                <!-- Ces boutons filtreront les projets avec JavaScript -->
+                <button class="filter-btn filter-btn--active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+                <button class="filter-btn" data-filter="cybersecurity">Cybersécurité</button>
+                <button class="filter-btn" data-filter="data">Data</button>
+                <button class="filter-btn" data-filter="ai">IA</button>
+            </div>
+            
+            <div class="projects__grid">
+                <!-- Projet 1 : Full Stack -->
+                <article class="project-card" data-category="fullstack">
+                    <!-- data-category servira au filtrage JavaScript -->
+                    <div class="project-card__img-container">
+                        <img src="image/ArtéNova-Shop.jpeg" alt="Projet 1" class="project-card__img">
+                        <div class="project-card__overlay">
+                            <a href="https://github.com/vous/projet1" class="project-card__link" target="_blank">GitHub</a>
+                            <a href="https://demo1.com" class="project-card__link" target="_blank">Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Plateforme E-commerce Sécurisée</h3>
+                        <p class="project-card__description">
+                            Application web full stack avec authentification sécurisée, 
+                            paiement en ligne et tableau de bord admin.
+                        </p>
+                        <div class="project-card__tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 2 : Cybersécurité -->
+                <article class="project-card" data-category="cybersecurity">
+                    <div class="project-card__img-container">
+                        <img src="image/cybersecurity-vulnerabilities.png" alt="Projet 2" class="project-card__img">
+                        <div class="project-card__overlay">
+                            <a href="https://github.com/vous/projet2" class="project-card__link" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Outil d'Analyse de Vulnérabilités</h3>
+                        <p class="project-card__description">
+                            Scanner de sécurité automatisé pour détecter les vulnérabilités réseau.
+                        </p>
+                        <div class="project-card__tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Nmap</span>
+                            <span class="tag">Flask</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 3 : Data -->
+                <article class="project-card" data-category="data">
+                    <div class="project-card__img-container">
+                        <img src="image/ETL_Process_Illustration_ed7b2b5c85 (1).png" alt="Projet 3" class="project-card__img">
+                        <div class="project-card__overlay">
+                            <a href="https://github.com/vous/projet3" class="project-card__link" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Pipeline ETL Données Financières</h3>
+                        <p class="project-card__description">
+                            Pipeline de données automatisé avec visualisations interactives.
+                        </p>
+                        <div class="project-card__tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Airflow</span>
+                            <span class="tag">Power BI</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 4 : IA -->
+                <article class="project-card" data-category="ai">
+                    <div class="project-card__img-container">
+                        <img src="image/Assistant-IA-RAG.jpg" alt="Projet 4" class="project-card__img">
+                        <div class="project-card__overlay">
+                            <a href="https://github.com/vous/projet4" class="project-card__link" target="_blank">GitHub</a>
+                            <a href="https://demo4.com" class="project-card__link" target="_blank">Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Assistant IA avec RAG</h3>
+                        <p class="project-card__description">
+                            Chatbot intelligent utilisant LLM et technique RAG.
+                        </p>
+                        <div class="project-card__tags">
+                            <span class="tag">LangChain</span>
+                            <span class="tag">OpenAI</span>
+                            <span class="tag">ChromaDB</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 5 : IA + Data -->
+                <article class="project-card" data-category="ai data">
+                    <div class="project-card__img-container">
+                        <img src="image/Screenshot_20251205_013210_Gallery.png" alt="Projet 5" class="project-card__img">
+                        <div class="project-card__overlay">
+                            <a href="https://github.com/vous/projet5" class="project-card__link" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Détection de Fraudes ML</h3>
+                        <p class="project-card__description">
+                            Modèle ML pour détecter les transactions frauduleuses en temps réel.
+                        </p>
+                        <div class="project-card__tags">
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">Pandas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 6 : IA Générative -->
+                <article class="project-card" data-category="ai">
+                    <div class="project-card__img-container">
+                        <img src="image/LIA-generative-nouvel-atout-strategique-du-marketing-au-1.png" alt="Projet 6" class="project-card__img">
+                        <div class="project-card__overlay">
+                            <a href="https://github.com/vous/projet6" class="project-card__link" target="_blank">GitHub</a>
+                            <a href="https://demo6.com" class="project-card__link" target="_blank">Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Générateur de Contenu Marketing IA</h3>
+                        <p class="project-card__description">
+                            Application utilisant GPT-4 pour générer du contenu marketing SEO.
+                        </p>
+                        <div class="project-card__tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">GPT-4</span>
+                            <span class="tag">Tailwind</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION CONTACT
+         ======================================== -->
+    <section class="contact section" id="contact">
+        <div class="contact__container container">
+            <h2 class="section__title">Me Contacter</h2>
+            
+            <div class="contact__content">
+                <div class="contact__info">
+                    <h3 class="contact__subtitle">Informations de Contact</h3>
+                    <ul class="contact__list">
+                        <li class="contact__item">
+                            <strong>Email :</strong> merphy97@gmail.com
+                        </li>
+                        <li class="contact__item">
+                            <strong>Téléphone :</strong> +221 76-558-78-77
+                        </li>
+                        <li class="contact__item">
+                            <strong>Localisation :</strong> Dakar, Sénégal
+                        </li>
+                        <li class="contact__item">
+                            <strong>LinkedIn :</strong> 
+                            <a href="https://www.linkedin.com/in/merph-dev?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">linkedin.com/merph-dev</a>
+                        </li>
+                        <li class="contact__item">
+                            <strong>GitHub :</strong> 
+                            <a href="https://github.com/FullStackFlow-dev" target="_blank">github.com/</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contact__form-container">
+                    <h3 class="contact__subtitle">Formulaire de Contact</h3>
+                    <form class="contact__form" id="contact-form">
+                        <!-- 
+                            Le JavaScript interceptera la soumission du formulaire
+                            pour valider les données avant envoi
+                        -->
+                        
+                        <div class="form__group">
+                            <label for="nom" class="form__label">Nom complet</label>
+                            <input 
+                                type="text" 
+                                id="nom" 
+                                name="nom" 
+                                class="form__input" 
+                                required
+                            >
+                            <!-- required = champ obligatoire (validation HTML5) -->
+                        </div>
+
+                        <div class="form__group">
+                            <label for="email" class="form__label">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form__input" 
+                                required
+                            >
+                            <!-- type="email" valide automatiquement le format email -->
+                        </div>
+
+                        <div class="form__group">
+                            <label for="sujet" class="form__label">Sujet</label>
+                            <input 
+                                type="text" 
+                                id="sujet" 
+                                name="sujet" 
+                                class="form__input" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form__group">
+                            <label for="message" class="form__label">Message</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="6" 
+                                class="form__textarea" 
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PIED DE PAGE
+         ======================================== -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">Merphy - Mademba</h3>
+                    <p class="footer__description">
+                        Développeur Full Stack | Cybersécurité | Data Engineering | IA
+                    </p>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Liens Rapides</h4>
+                    <ul class="footer__links">
+                        <li><a href="#accueil" class="footer__link">Accueil</a></li>
+                        <li><a href="#competences" class="footer__link">Compétences</a></li>
+                        <li><a href="#projets" class="footer__link">Projets</a></li>
+                        <li><a href="#contact" class="footer__link">Contact</a></li>
+                    </ul>
+                </div>
+                  <div class="footer__section">
+                    <h4 class="footer__subtitle">Retrouvez-moi sur les réseaux</h4>
+                  <div class="footer__social">
+                      <a href="https://www.linkedin.com/in/merph-dev" class="footer__social-link" target="_blank" aria-label="LinkedIn">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                      </a>
+        
+                      <a href="https://github.com/FullStackFlow-dev" class="footer__social-link" target="_blank" aria-label="GitHub">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                      </a>
+        
+                      <a href="https://www.instagram.com/merph.dev?igsh=MWw0MXFqd3RnZXh1cA==" class="footer__social-link" target="_blank" aria-label="Instagram">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                      </a>
+        
+                      <a href="https://x.com/MMademba67105" class="footer__social-link" target="_blank" aria-label="X (Twitter)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                 </svg>
+                      </a>
+        
+                      <a href="https://bsky.app/profile/merph-dev.bsky.social" class="footer__social-link" target="_blank" aria-label="Bluesky">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                 </svg>
+                      </a>
+        
+                      <a href="https://www.threads.com/@merph.dev" class="footer__social-link" target="_blank" aria-label="Threads">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                 </svg>
+                      </a>
+              </div>
+          </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    &copy; 2025 Merphy-mademba. Tous droits réservés.
+                </p>
+            </div>
+        </div>          
+    </footer>
+
+    <!-- Bouton "Retour en haut" -->
+    <a href="#accueil" class="scroll-top" id="scroll-top">
+        ↑
+    </a>
+    <!-- 
+        Ce bouton apparaîtra quand on scrolle vers le bas
+        Il permettra de remonter rapidement en haut de la page
+    -->
+ <script>
+        // Sélectionner le bouton hamburger et le menu
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        // Ajouter un événement au clic sur le bouton
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('show-menu');
+        });
+
+        // Fermer le menu quand on clique sur un lien
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('show-menu');
+            });
+        });
+    </script>   
+</body>
+</html>
