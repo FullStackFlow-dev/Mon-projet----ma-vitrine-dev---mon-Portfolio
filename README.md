@@ -42,7 +42,8 @@ Chaque section est développée dans une branche dédiée :
 
 - `feature-accueil` → Accueil  
 - `feature-navigation` → Menu  
-- `feature-a-propos` → À propos  
+- `feature-a-propos` → À propos
+- `feature-a-blog` → Blog
 - `feature-competences` → Compétences  
 - `feature-projets` → Projets  
 - `feature-contact` → Formulaire de contact  
