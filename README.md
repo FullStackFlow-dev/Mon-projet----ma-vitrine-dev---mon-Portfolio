@@ -1,3 +1,10 @@
+🌐 Portfolio - Merph-dev
+
+![Netlify Status](https://app.netlify.com/projects/merphdev-portfolio/deploys)
+![Live Demo](https://merphdev-portfolio.netlify.app)
+!License
+!GitHub stars
+
 #   Projet Portfolio Professionnel – Merph-dev
 
 Ceci est ma carte de visite numérique et une vitrine de mon développement professionnel autodidacte.  
