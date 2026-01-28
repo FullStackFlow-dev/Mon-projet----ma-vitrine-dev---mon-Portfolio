@@ -8,9 +8,6 @@
 ---
 
 ## 🧾 Présentation
-Ceci est ma carte de visite : un portfolio professionnel qui regroupe mes projets tech, mes compétences en développement web, cloud, IA et cybersécurité.
-
-#   Projet Portfolio Professionnel – Merph-dev
 
 Ceci est ma carte de visite numérique et une vitrine de mon développement professionnel autodidacte.  
 Ce projet centralise mes compétences, mes projets et mes certifications dans les domaines du développement web, de la cybersécurité, du data engineering et de l’intelligence artificielle.
