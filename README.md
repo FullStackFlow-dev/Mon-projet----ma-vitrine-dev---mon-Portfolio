@@ -1,9 +1,14 @@
-🌐 Portfolio - Merph-dev
+# 🌐 Projet Portfolio Professionnel – Merph-dev
 
-![Netlify Status](https://app.netlify.com/projects/merphdev-portfolio/deploys)
-![Live Demo](https://merphdev-portfolio.netlify.app)
-!License
-!GitHub stars
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d25a9fb8-ebc1-4dec-bad9-239f84a4e19b/deploy-status)](https://app.netlify.com/projects/merphdev-portfolio/deploys)
+[![Live Demo](https://img.shields.io/badge/demo-online-green)](https://merphdev-portfolio.netlify.app)
+![License](https://img.shields.io/github/license/merph-dev/merphdev-portfolio.svg)
+![GitHub stars](https://img.shields.io/github/stars/merph-dev/merphdev-portfolio?style=social)
+
+---
+
+## 🧾 Présentation
+Ceci est ma carte de visite : un portfolio professionnel qui regroupe mes projets tech, mes compétences en développement web, cloud, IA et cybersécurité.
 
 #   Projet Portfolio Professionnel – Merph-dev
 
